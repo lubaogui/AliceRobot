@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/robot/alice/alice_common/install/setup.sh
