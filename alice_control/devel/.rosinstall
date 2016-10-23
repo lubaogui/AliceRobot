@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/robot/AliceRobot/alice_control/devel/setup.sh
