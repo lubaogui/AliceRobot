@@ -7,7 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/robot/alice/alice_common/devel:$CMAKE_PREFIX_PATH"
-export PWD="/home/robot/alice/alice_common/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/robot/alice/alice_common/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/robot/alice/alice_common/src:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/robot/AliceRobot/alice_common/devel:$CMAKE_PREFIX_PATH"
+export PWD="/home/robot/AliceRobot/alice_common/build"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/robot/AliceRobot/alice_common/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/home/robot/AliceRobot/alice_common/src:$ROS_PACKAGE_PATH"
