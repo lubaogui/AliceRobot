@@ -1,8 +1,0 @@
-prefix=/home/robot/AliceRobot/alice_control/devel
-
-Name: alice_control
-Description: Description of alice_control
-Version: 0.0.1
-Cflags: 
-Libs: -L/home/robot/AliceRobot/alice_control/devel/lib 
-Requires: 
