@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find alice_gazebo)/launch/alice.launch">
+    <arg name="world_name" value="alice_walker"/>
+  </include>
+</launch>

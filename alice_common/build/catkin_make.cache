@@ -1,0 +1,2 @@
+alice_description
+-DCATKIN_DEVEL_PREFIX=/home/robot/AliceRobot/alice_common/devel -DCMAKE_INSTALL_PREFIX=/home/robot/AliceRobot/alice_common/install -G Unix Makefiles
