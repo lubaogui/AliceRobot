@@ -34,9 +34,9 @@ class OdometryNode:
         rospy.Subscriber('/gazebo/link_states', LinkStates, self.sub_robot_pose_update)
 
     def sub_robot_pose_update(self, msg):
-        # Find the index of the racecar
+        # Find the index of the alice
         try:
-            arrayIndex = msg.name.index('racecar::base_link')
+            arrayIndex = msg.name.index('alice::base_link')
         except ValueError as e:
             # Wait for Gazebo to startup
             pass

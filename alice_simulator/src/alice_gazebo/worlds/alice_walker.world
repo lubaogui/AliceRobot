@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sdf version="1.4">
-<world name="racecar_walker">
+<world name="alice_walker">
 
   <scene>
     <ambient>0.5 0.5 0.5 1.0</ambient>
@@ -34,7 +34,7 @@
           </light>
 
   <include>
-    <uri>model://racecar_description/models/walker_racecourse</uri>
+    <uri>model://alice_description/models/walker_racecourse</uri>
     <pose>-4 2 -.5 0 0 -1.57</pose>
     <name>walker_racecourse</name>
   </include>

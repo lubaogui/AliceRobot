@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sdf version="1.4">
-<world name="racecar_tunnel">
+<world name="alice_tunnel">
 
   <include>
     <uri>model://sun</uri>
