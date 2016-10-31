@@ -96,10 +96,10 @@ find_package(catkin REQUIRED)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES racecar_description
-#  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+  LIBRARIES alice_description
+  CATKIN_DEPENDS roscpp nodelet message_runtime std_msgs sensor_msgs
+  DEPENDS system_lib eigen opencv
 )
 
 ###########
@@ -141,31 +141,46 @@ catkin_package(
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# install(PROGRAMS
+#install(PROGRAMS
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+#)
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS racecar_description racecar_description_node
+#install(TARGETS ${PROJECT_NAME} 
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
 ## Mark cpp header files for installation
-# install(DIRECTORY include/${PROJECT_NAME}/
-#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-#   FILES_MATCHING PATTERN "*.h"
-#   PATTERN ".svn" EXCLUDE
-# )
+install(DIRECTORY include/
+   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+   FILES_MATCHING PATTERN "*.h"
+   PATTERN ".svn" EXCLUDE
+   PATTERN ".git" EXCLUDE
+)
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
-# install(FILES
-#   # myfile1
-#   # myfile2
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
+install(DIRECTORY  urdf/
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
+   PATTERN ".svn" EXCLUDE
+   PATTERN ".git" EXCLUDE
+)
+
+## Mark other files for installation (e.g. launch and bag files, etc.)
+install(DIRECTORY  models/
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/models
+   PATTERN ".svn" EXCLUDE
+   PATTERN ".git" EXCLUDE
+)
+
+## Mark other files for installation (e.g. launch and bag files, etc.)
+install(DIRECTORY  meshes/
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshes
+   PATTERN ".svn" EXCLUDE
+   PATTERN ".git" EXCLUDE
+)
 
 #############
 ## Testing ##
