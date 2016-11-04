@@ -96,7 +96,6 @@ find_package(catkin REQUIRED)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS include
   LIBRARIES alice_description
   CATKIN_DEPENDS roscpp nodelet message_runtime std_msgs sensor_msgs
   DEPENDS system_lib eigen opencv
@@ -153,10 +152,9 @@ catkin_package(
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
-## Mark cpp header files for installation
-install(DIRECTORY include/
-   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-   FILES_MATCHING PATTERN "*.h"
+## Mark other files for installation (e.g. launch and bag files, etc.)
+install(DIRECTORY  launch/
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
    PATTERN ".svn" EXCLUDE
    PATTERN ".git" EXCLUDE
 )
