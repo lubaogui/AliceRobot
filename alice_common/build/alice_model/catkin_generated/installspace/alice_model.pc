@@ -1,8 +1,0 @@
-prefix=/home/caros/AliceRobot/alice_common/install
-
-Name: alice_model
-Description: Description of alice_model
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/caros/AliceRobot/alice_common/install/lib 
-Requires: 
