@@ -1,0 +1,8 @@
+prefix=/home/caros/AliceRobot/alice_common/devel
+
+Name: alice_model
+Description: Description of alice_model
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/caros/AliceRobot/alice_common/devel/lib 
+Requires: 

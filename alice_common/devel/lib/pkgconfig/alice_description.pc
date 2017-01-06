@@ -1,0 +1,8 @@
+prefix=/home/caros/AliceRobot/alice_common/devel
+
+Name: alice_description
+Description: Description of alice_description
+Version: 0.0.1
+Cflags: 
+Libs: -L/home/caros/AliceRobot/alice_common/devel/lib -lalice_description
+Requires: roscpp nodelet message_runtime std_msgs sensor_msgs
