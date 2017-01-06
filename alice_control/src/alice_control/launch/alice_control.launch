@@ -22,7 +22,7 @@
 
   <!-- servo node -->
   <node pkg="alice_control" type="servo_commands.py" name="servo_commands" output="screen">
-    <remap from="/alice/ackermann_cmd_mux/output" to="/vesc/ackermann_cmd_mux/output"/>
+    <remap from="/vesc/ackermann_cmd_mux/output" to="/alice/ackermann_cmd_mux/output"/>
   </node>
 
   <!-- Allow for Gazebo to broadcast odom -->

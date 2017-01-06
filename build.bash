@@ -9,6 +9,10 @@ fi
 
 installTargetPath=$1
 scriptPath=$(cd `dirname $0`;pwd)
+commandRunPath=$(pwd)
+
+absolutePathPattern="^\/.*"
+[[ ${installTargetPath} =~ $absolutePathPattern ]] || installTargetPath=$commandRunPath/$installTargetPath 
 
 #list all modules in current directory
 modules=($(ls -l $scriptPath|grep '^d'|awk '{print $9}'))
@@ -20,9 +24,10 @@ do
     module=$scriptPath/${modules[$i]}
     echo "Current Module:-->"$module
     cd $module && catkin_make install
+    find $module/install -type f -name *.py |xargs chmod +x
     if [ $? -eq 0 ];then
         echo "begin install $module ........"
-	rsync -lortP $module/install/ $installTargetPath/
+	rsync -avzP $module/install/ $installTargetPath/
         echo "Install $module Succeeded!........"
         rm -fr build devel install >/dev/null 2>&1
         echo "clean $module Succeeded!........"
