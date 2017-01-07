@@ -24,10 +24,10 @@ do
     module=$scriptPath/${modules[$i]}
     echo "Current Module:-->"$module
     cd $module && catkin_make install
-    find $module/install -type f -name *.py |xargs chmod +x
     if [ $? -eq 0 ];then
         echo "begin install $module ........"
-	rsync -avzP $module/install/ $installTargetPath/
+        find $module/install -type f -name *.py |xargs chmod +x
+        rsync -avzP $module/install/ $installTargetPath/
         echo "Install $module Succeeded!........"
         rm -fr build devel install >/dev/null 2>&1
         echo "clean $module Succeeded!........"
