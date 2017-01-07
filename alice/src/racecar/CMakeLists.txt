@@ -161,7 +161,7 @@ catkin_package(
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
-install(DIRECTORY launch
+install(DIRECTORY launch config maps rviz
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
