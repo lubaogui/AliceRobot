@@ -9,10 +9,6 @@
     <arg name="gui" value="$(arg gui)"/>
   </include>
 
-  <!-- urdf xml robot description loaded on the Parameter Server, converting the xacro into a proper urdf file-->
-  <group ns="$(arg namespace)"> 
-      <param name="robot_description" command="$(find xacro)/xacro '$(find alice_description)/urdf/alice.xacro'" />
-  </group>
 
   <!-- push robot_description to factory and spawn robot in gazebo -->
   <node name="alice_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model alice -z 0.05" />
