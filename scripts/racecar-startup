@@ -1,0 +1,89 @@
+#!/usr/bin/env bash 
+################################################
+
+#  setup ros env
+#  author: Lyu Baogui<lbaogui@pku.org.cn>
+
+###############################################
+: ${RACECAR_USER:=nvidia}
+: ${ROS_BASEPATH:=/opt/ros/kinetic}
+: ${ADU_PATH:=/home/$RACECAR_USER/adu}
+
+declare -r ROS_IP=127.0.0.1
+declare -r VESC_DEVICE=/dev/ttyACM0
+
+
+#configure base ros env and user extended env
+setup_ros_env() {
+
+    local CATKIN_SHELL
+    if [ -n "$SHELL" ]; then
+        case $SHELL in
+            /bin/bash)
+                CATKIN_SHELL=bash
+                ;;
+            /bin/zsh)
+                CATKIN_SHELL=zsh
+                ;;
+            *)
+                CATKIN_SHELL=sh
+                ;;
+        esac
+    fi
+
+    echo "SHELL is $SHELL"
+    echo "CATKIN_SHELL is $CATKIN_SHELL"
+    # source setup.sh from same directory as this file
+    _CATKIN_SETUP_DIR=$ROS_BASEPATH
+    if [ -f $_CATKIN_SETUP_DIR/setup.sh ]; then
+        . "$_CATKIN_SETUP_DIR/setup.sh"
+    fi
+
+    # source setup.sh from adu path
+    _CATKIN_SETUP_DIR=$ADU_PATH
+    if [ -f $_CATKIN_SETUP_DIR/setup.sh ]; then
+        . "$_CATKIN_SETUP_DIR/setup.sh"
+    fi
+
+}
+
+#setup user specified env
+setup_custom_env() {
+    export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$ADU_PATH
+}
+
+# main process function
+main() {
+    setup_ros_env
+    setup_custom_env
+
+    echo 'Source env variable......'
+    . /home/$RACECAR_USER/bash_include_6.141 
+
+    echo 'Wait device ready......'
+    while [ -z "$(ls -l $VESC_DEVICE 2>/dev/null)" ]
+    do
+        sleep 1s
+    done
+    echo "Vesc Device is avaiable!"
+
+    echo 'Check vesc device writing privilege......'
+    while [ 1 ]
+    do
+        echo 'check writing status' >$VESC_DEVICE 2>/dev/null
+        if [ $? -eq 0 ]; then
+            echo 'Succeeded!'
+            break
+        else
+            sleep 2s
+        fi
+    done
+    echo 'OK!'
+    echo 'Vesc Device is Ready, Prepare to Go!!!'
+
+    echo "Start racecar launch file......"
+    roslaunch racecar teleop.launch >/home/$RACECAR_USER/racecar.log 2>&1
+}
+
+#Go
+main "$@"
